@@ -28,9 +28,10 @@ const initialTeamMemberList = [
 {
   id: uuid(), // uuid is the library I am using to generate random, unique ID's
   imgsrc: newImgsrc,
-  fname: 'teammemberTest',
-  lname: 'teammemberTest',
-  email: 'testmemberEmail',
+  fname: 'Hudson',
+  lname: 'Human Resources',
+  role: 'HR Director',
+  email: 'hudson@iamtheshit.io',
   phone: '310-310-3102',
   preferred: 'text',
 
@@ -43,6 +44,7 @@ const initialFormValues = {
   //Text inputs!
   fname: '',
   lname: '',
+  role: '',
   email: '',
   phone: '',
   //DROPDOWN
@@ -53,8 +55,8 @@ const initialFormValues = {
 const fakeAxiosGet = () => {
   return Promise.resolve({ status: 200, success: true, data: initialTeamMemberList })
 }
-const fakeAxiosPost = (url, { imgsrc, fname, lname, email, phone, preferred }) => {
-  const newTeamMember = { id: uuid(), imgsrc, fname, lname, email, phone, preferred}
+const fakeAxiosPost = (url, { imgsrc, fname, lname, role, email, phone, preferred }) => {
+  const newTeamMember = { id: uuid(), imgsrc, fname, role, lname, email, phone, preferred}
   return Promise.resolve({ status: 200, success: true, data: newTeamMember })
 }
 
@@ -72,13 +74,14 @@ function App() {
   const newTeamMember = {
       imgsrc: formValues.imgsrc,  
       fname: formValues.fname.trim(), // takes in value, and trims any whitespace to avoide data corruption and memory leaks
-      lname: formValues.lname.trim(), 
+      lname: formValues.lname.trim(),
+      role: formValues.role, 
       email: formValues.email.trim(),
       phone: formValues.phone.trim(),
       preferred: formValues.preferred,
     }
     //error handling on blank form state - prevent user from submitting form
-    if (!newTeamMember.fname || !newTeamMember.lname || !newTeamMember.email || !newTeamMember.phone || !newTeamMember.preferred)  {
+    if (!newTeamMember.fname || !newTeamMember.lname || !newTeamMember.role || !newTeamMember.email || !newTeamMember.phone || !newTeamMember.preferred)  {
       return 
     }
     // Post new team member info to backend to update list of team members

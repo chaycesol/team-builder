@@ -25,8 +25,9 @@ export default function TeamMember(props) {
   return (
     <div className= 'teamMemberInfo container'>
     <StyledTeamList className='teamMember container'>
-      <h3>Name: {details.fname} {details.lname}</h3>
+      <h2>Name: {details.fname} {details.lname}</h2>
         <img src={`${details.imgsrc}`} alt="team member pic"></img>
+        <h3>Role: {details.role} </h3>
         <p>Email: {details.email}</p>
         <p>Phone: {details.phone}</p>
         <p>Preferred Method of Contact: {details.preferred}</p>

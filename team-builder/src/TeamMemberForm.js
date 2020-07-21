@@ -3,6 +3,14 @@ import styled from 'styled-components'
 
 const StyledForm = styled.form`
     font-family: 'Mulish', sans-serif;
+    input{
+        background-color: #E8EDDF;
+        border: 2px dotted #242423;
+    }
+    select{
+        background-color: #E8EDDF;
+        border: 2px dotted #242423;
+    }
 `
 
 export default function TeamMemberForm(props) {
@@ -51,6 +59,25 @@ export default function TeamMemberForm(props) {
         />
         </label>
         <br />
+        <label htmlFor='roleInput'>Role:&nbsp;
+          <select 
+          id="roleInput" 
+          name="role"
+          value={values.role}
+          onChange = {onChange}>
+            <option value="Select One">Select One</option>
+            <option value="Client Success">Client Success Team</option>
+            <option value="Sales">Sales Team</option>
+            <option value="Marketing">Marketing Team</option>
+            <option value="Product">Product Manager</option>
+            <option value="UX">UX Designer</option>
+            <option value="Engineering-FrontEnd">Front-End Engineer</option>
+            <option value="Engineering-BackEnd">Back-End Engineer</option>
+            <option value="Engineering-DevOps">DevOps Engineer</option>
+            <option value="Quality-Assurance">QA Analyst/Tester</option>
+        </select>
+        </label>
+        <br />
         <label htmlFor='emailInput'> Email:&nbsp; 
         <input id="emailInput"
         name='email'
@@ -74,8 +101,6 @@ export default function TeamMemberForm(props) {
         </label>
         <br />
         <label htmlFor='preferredInput'>Preferred Method of Contact:&nbsp;
-          {/* 🔥 STEP 9 - Make dropdown for role. Dropdowns look very different
-            but they can often use the same change handler text inputs use */}
           <select 
           id="preferredInput" 
           name="preferred"
